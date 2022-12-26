@@ -1,3 +1,10 @@
+// Main colors
+$primary: #F5A962;
+$secondary: #BEE0FF;
+$font-color: #5C75DB;
+$cloud: #F7F7F7;
+$white: #ffffff;
+//------
 * {
     padding: 0;
     margin: 0;
@@ -5,4 +12,7 @@
     box-sizing: border-box;
 }
 
-// Main colors
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $primary;
+}
