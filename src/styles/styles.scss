@@ -1,6 +1,8 @@
 // UI Settings
 @import "./base/settings";
 @import "./base/variables";
+@import "./base/mixins";
 // Components
+@import "./components/header";
 // Pages
 @import "./pages/landing";

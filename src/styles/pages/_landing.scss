@@ -1,0 +1,13 @@
+.landing-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: map-get($colors, "primary");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .main {
+        width: 85%;
+        height: 85%;
+        background-color: map-get($colors, "secondary");
+    }
+}
