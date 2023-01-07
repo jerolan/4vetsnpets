@@ -1,4 +1,5 @@
-import Landing from "./pages/Landing"
+import Landing from "./pages/Landing";
+import SignIn from "./pages/SignIn";
 
 function App() {
 
