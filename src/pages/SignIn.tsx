@@ -1,9 +1,8 @@
+import Header from "../components/Header";
 function SignIn() {
-    return <>
-    <div>
-        <h1>Hello from login screen</h1>
+    return <div className="signin-container">
+        <Header></Header>
     </div>
-    </>
 }
 
 
