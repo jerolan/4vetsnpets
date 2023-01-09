@@ -1,0 +1,35 @@
+.comingSoon-container {
+    background-color: map-get($colors, "secondary");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    .sign {
+        background-color: map-get($colors, "cloud");
+        width: 80%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        &-icon {
+            background-color: map-get($colors, "font-color");
+            color: map-get($colors, "cloud");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-size: 50px;
+        }
+        &-img {
+            width: 65%;
+        }
+        h1 {
+            font-size: 50px;
+            color: map-get($colors, "font-color");
+        }
+    }
+}
