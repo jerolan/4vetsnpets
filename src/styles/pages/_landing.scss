@@ -21,6 +21,9 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                @include media-up(md) {
+                    width: 100%;
+                }
             }
             .info {
                 color: map-get($colors, "font-color");
@@ -36,6 +39,9 @@
                     width: 350px;
                     margin-top: 10px;
                     text-align: justify;
+                    @include media-up(md) {
+                        width: 280px;
+                    }
                 }
                 .btn {
                     padding: 10px;
@@ -66,6 +72,9 @@
                     height: 400px;
                     background: map-get($colors, "white");
                     border-radius: 40% 50% 50% 30% / 60% 60% 40% 40%;
+                }
+                @include media-up(md) {
+                    display: none;
                 }
             }
         }
