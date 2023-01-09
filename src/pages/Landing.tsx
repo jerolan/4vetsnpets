@@ -19,7 +19,7 @@ function Landing() {
           </div>
           <div className="pet-img box">
             <div className="spot"></div>
-            <img src="src/assets/landing-dog.png" alt="German Shepherd" />
+            <img src="src/assets/img/landing-dog.png" alt="German Shepherd" />
           </div>
         </div>
       </div>
