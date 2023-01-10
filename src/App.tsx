@@ -6,9 +6,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Landing/> */}
+      <Landing/>
       {/* <SignIn/> */}
-      <ComingSoon/>
+      {/* <ComingSoon/> */}
     </div>
   )
 }
