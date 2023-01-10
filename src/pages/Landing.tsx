@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
 function Landing() {
@@ -15,7 +16,7 @@ function Landing() {
                     make your furry friend happy.
                 </p>
             </div>
-            <button className="btn">Sign up</button>
+            <Link to="/signup" className="btn">Sign up</Link>
           </div>
           <div className="pet-img box">
             <div className="spot"></div>
