@@ -1,14 +1,10 @@
-import Landing from "./pages/Landing";
-import SignIn from './pages/SignIn';
-import ComingSoon from './components/ComingSoon';
+import { MyRouter } from './MyRouter';
 
 function App() {
 
   return (
     <div className="App">
-      <Landing/>
-      {/* <SignIn/> */}
-      {/* <ComingSoon/> */}
+      <MyRouter/>
     </div>
   )
 }
