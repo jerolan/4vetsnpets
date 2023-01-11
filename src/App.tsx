@@ -6,9 +6,9 @@ import { config } from './services/config';
 initializeApp(config.firebaseConfig);
 
 function App (){
-    return(<>
+    return(<main className='app'>
         <RouterProvider router={router}/>
-    </>);
+    </main>);
 }
 
 export default App;
