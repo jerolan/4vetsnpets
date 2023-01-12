@@ -1,0 +1,56 @@
+.signin-container {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    background-color: map-get($colors, 'secondary');
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+    @include flex(row);
+    &__img {
+        width: 50%;
+        height: 100%;
+        padding-top: 60px;
+        @include flex(row);
+        img {
+            position: relative;
+            left: 50px;
+            top: 5px;
+            z-index: 1;
+            object-fit: cover;
+            width: 80%;
+        }
+        .img-spot {
+            position: absolute;
+            margin-top: 20px;
+            width: 30%;
+            height: 60%;
+            background: map-get($colors, "white");
+            border-radius: 40% 50% 50% 30% / 60% 60% 40% 40%;
+        }
+    }
+    &__form {
+        @include flex(row);
+        width: 50%;
+        height: 100%;
+        background-color: map-get($colors, 'cloud');
+        .signin-form {
+            @include flex(column);
+            box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            gap: 30px;
+            height: 80%;
+            width: 60%;
+            background-color: map-get($colors, "white");
+            &__content {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                height: 70%;
+            }
+        }
+    }
+}
