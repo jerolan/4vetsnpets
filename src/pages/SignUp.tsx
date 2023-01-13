@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { UserAuth } from "../context/AuthContext";
 import * as MdIcons from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import Header from "../components/Header";
-import SignIn from "./SignIn";
 
 function SignUp() {
   const { createUser } = UserAuth();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -24,6 +24,7 @@ function SignUp() {
       : "user";
     try {
       await createUser(values.email, values.password, rol);
+      navigate("/home");
     } catch (e) {
       console.error(e);
     }
