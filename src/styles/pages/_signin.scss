@@ -7,7 +7,7 @@
     margin: auto;
     width: 80%;
     height: 80%;
-    background-color: map-get($colors, 'secondary');
+    background-color: map-get($colors, "secondary");
     box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
     @include flex(row);
     &__img {
@@ -21,7 +21,7 @@
             top: 5px;
             z-index: 1;
             object-fit: cover;
-            width: 80%;
+            width: 75%;
         }
         .img-spot {
             position: absolute;
@@ -36,20 +36,72 @@
         @include flex(row);
         width: 50%;
         height: 100%;
-        background-color: map-get($colors, 'cloud');
+        background-color: map-get($colors, "cloud");
         .signin-form {
             @include flex(column);
             box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.3);
             border-radius: 15px;
             gap: 30px;
-            height: 80%;
+            height: 70%;
             width: 60%;
             background-color: map-get($colors, "white");
+            color: map-get($colors, "font-color");
             &__content {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                height: 70%;
+                height: 40%;
+                width: 100%;
+                .group-input {
+                    width: 100%;
+                    position: relative;
+                    input {
+                        margin-left: 20px;
+                        width: 90%;
+                        border: 2px solid map-get($colors, "font-color");
+                        border-radius: 15px;
+                        padding: 7px 0 7px 40px;
+                        outline: none;
+                        color: map-get($colors, "font-color");
+                        &::placeholder {
+                            color: map-get($colors, "font-color");
+                        }
+                    }
+                    .form-icon {
+                        position: absolute;
+                        margin-left: 35px;
+                        top: 7.5px;
+                    }
+                }
+            }
+            &__footer {
+                @include flex(column);
+                gap: 20px;
+                width: 100%;
+                .form-btn {
+                    text-align: center;
+                    padding: 10px;
+                    border-radius: 25px;
+                    width: 50%;
+                    font-weight: bold;
+                    color: map-get($colors, "cloud");
+                    background-color: map-get($colors, "font-color");
+                    font-size: 17px;
+                    transition: all .2s ease;
+                    &:hover {
+                        box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);
+                        font-size: 18.5px;
+                    }
+                }
+                .form-link {
+                    text-decoration: none;
+                    font-weight: bold;
+                    color: map-get($colors, "font-color");
+                    transition: all .2s ease;
+                    &:hover {
+                        color: map-get($colors, "primary");
+                    }
+                }
             }
         }
     }

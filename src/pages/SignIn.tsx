@@ -1,6 +1,9 @@
-import Header from "../components/Header";
-import * as MdIcons from "react-icons/md";
+import { useState } from "react";
 import { useFormik } from "formik";
+import { UserAuth } from "../context/AuthContext";
+import * as MdIcons from "react-icons/md";
+import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   const formik = useFormik({
@@ -8,9 +11,10 @@ function SignIn() {
       email: "",
       password: "",
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: handleSubmit,
   });
 
+  async function handleSubmit(values: any) {}
   return (
     <>
       <Header></Header>
@@ -24,7 +28,7 @@ function SignIn() {
             <h2>Sign in</h2>
             <div className="signin-form__content">
               <div className="group-input">
-                <MdIcons.MdOutlineEmail />
+                <MdIcons.MdOutlineEmail className="form-icon"/>
                 <input
                   id="email"
                   type="email"
@@ -34,7 +38,7 @@ function SignIn() {
                 />
               </div>
               <div className="group-input">
-                <MdIcons.MdLockOutline />
+                <MdIcons.MdLockOutline className="form-icon"/>
                 <input
                   id="password"
                   type="password"
@@ -43,7 +47,12 @@ function SignIn() {
                   onChange={formik.handleChange}
                 />
               </div>
-              <button type="submit">Submit</button>
+            </div>
+            <div className="signin-form__footer">
+              <button type="submit" className="form-btn">
+                Sign in
+              </button>
+              <p>Don't have an account? <Link to="/signup" className="form-link">Sign up</Link></p>
             </div>
           </form>
         </div>
