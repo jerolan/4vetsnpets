@@ -1,6 +1,8 @@
+import ComingSoon from "../components/ComingSoon";
+
 function Home(){
     return (<>
-        <h1>Welcome!</h1>
+        <ComingSoon/>
     </>)
 }
 
