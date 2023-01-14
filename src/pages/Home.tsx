@@ -1,9 +1,16 @@
 import ComingSoon from "../components/ComingSoon";
+import PetView from "../components/PetView";
+import VetView from "../components/VetView";
+import { UserAuth } from "../context/AuthContext";
 
-function Home(){
-    return (<>
-        <ComingSoon/>
-    </>)
+function Home() {
+  const { user } = UserAuth();
+  return (
+    <>
+      <h1>Home</h1>
+      {user.rol === "admin" ? <VetView /> : <PetView />}
+    </>
+  );
 }
 
 export default Home;

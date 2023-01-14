@@ -1,6 +1,6 @@
 function VetView(){
     return (<>
-        <h1>Hello Vet!</h1>
+        <h1>Hello from Vet!</h1>
     </>);
 }
 

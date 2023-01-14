@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import { UserAuth } from "../context/AuthContext";
-import * as MdIcons from "react-icons/md";
-import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import * as MdIcons from "react-icons/md";
+import * as Yup from "yup";
+import Header from "../components/Header";
+
+// Validation schema for form fields
+const FormSchema = Yup.object().shape({
+  email: Yup.string().required("This field is required").email(),
+  password: Yup.string().required("This field is required").min(8)
+});
+
 
 function SignIn() {
   const formik = useFormik({
@@ -12,6 +20,7 @@ function SignIn() {
       password: "",
     },
     onSubmit: handleSubmit,
+    validationSchema: FormSchema
   });
 
   async function handleSubmit(values: any) {}

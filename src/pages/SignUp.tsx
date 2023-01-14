@@ -1,9 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { UserAuth } from "../context/AuthContext";
-import * as MdIcons from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
+import * as MdIcons from "react-icons/md";
+import * as Yup from "yup";
 import Header from "../components/Header";
+
+const FormSchema = Yup.object().shape({
+  username: Yup.string().required("This field is required"),
+  email: Yup.string().required("This field is required").email(),
+  password: Yup.string().required("This field is required").min(8)
+});
+
 
 function SignUp() {
   const { createUser } = UserAuth();
@@ -15,11 +23,12 @@ function SignUp() {
       password: "",
     },
     onSubmit: handleSubmit,
+    validationSchema: FormSchema
   });
 
   async function handleSubmit(values: any) {
     const regexValidation = /^[a-zA-Z0-9_.+-]+@vet.com/;
-    const rol = regexValidation.test(formik.initialValues.email)
+    const rol = regexValidation.test(formik.values.email)
       ? "admin"
       : "user";
     try {
@@ -43,7 +52,7 @@ function SignUp() {
             <h2>Sign up</h2>
             <div className="signin-form__content">
               <div className="group-input">
-                <AiOutlineUser className="form-icon"/>
+                <AiOutlineUser className="form-icon" />
                 <input
                   id="username"
                   type="text"
@@ -53,7 +62,7 @@ function SignUp() {
                 />
               </div>
               <div className="group-input">
-                <MdIcons.MdOutlineEmail className="form-icon"/>
+                <MdIcons.MdOutlineEmail className="form-icon" />
                 <input
                   id="email"
                   type="email"
@@ -63,7 +72,7 @@ function SignUp() {
                 />
               </div>
               <div className="group-input">
-                <MdIcons.MdLockOutline className="form-icon"/>
+                <MdIcons.MdLockOutline className="form-icon" />
                 <input
                   id="password"
                   type="password"
@@ -78,7 +87,10 @@ function SignUp() {
                 Sign up
               </button>
               <p>
-                Do you have an account? <Link to="/signin" className="form-link">Sign in</Link>
+                Do you have an account?{" "}
+                <Link to="/signin" className="form-link">
+                  Sign in
+                </Link>
               </p>
             </div>
           </form>
