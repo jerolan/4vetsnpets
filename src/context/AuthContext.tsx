@@ -13,15 +13,23 @@ const UserContext = createContext<any>({});
 export function AuthContextProvider(props: any) {
   const [user, setUser] = useState({});
 
+  // Register, Login and Logout functions
   async function createUser(email: string, password: string, rol: string) {
     const infoUser = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     ).then((firebaseUser) => firebaseUser);
-
     const docRef = doc(fireStore, `users/${infoUser.user.uid}`);
     setDoc(docRef, { email: email, rol: rol });
+  }
+
+  function login(email: string, password: string, rol: string) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  function logout() {
+    return signOut(auth);
   }
 
   async function getRol(uid: any) {
@@ -38,13 +46,12 @@ export function AuthContextProvider(props: any) {
           const userData = {
             uid: currentUser.uid,
             email: currentUser.email,
-            rol: rol
+            rol: rol,
           };
           setUser(userData);
           console.log("Final Data", userData);
         });
       }
-      
     });
     return () => {
       unsubscribe();
@@ -53,7 +60,7 @@ export function AuthContextProvider(props: any) {
 
   return (
     <>
-      <UserContext.Provider value={{ createUser, user }}>
+      <UserContext.Provider value={{ createUser, login, logout, user }}>
         {props.children}
       </UserContext.Provider>
     </>
