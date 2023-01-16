@@ -12,9 +12,11 @@ const UserContext = createContext<any>({});
 
 export function AuthContextProvider(props: any) {
   const [user, setUser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Register, Login and Logout functions
   async function createUser(email: string, password: string, rol: string) {
+    setIsAuthenticated(true);
     const infoUser = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -25,10 +27,12 @@ export function AuthContextProvider(props: any) {
   }
 
   function login(email: string, password: string, rol: string) {
+    setIsAuthenticated(true);
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout() {
+    setIsAuthenticated(false);
     return signOut(auth);
   }
 
@@ -48,6 +52,7 @@ export function AuthContextProvider(props: any) {
             email: currentUser.email,
             rol: rol,
           };
+          setIsAuthenticated(true);
           setUser(userData);
           console.log("Final Data", userData);
         });
@@ -60,7 +65,7 @@ export function AuthContextProvider(props: any) {
 
   return (
     <>
-      <UserContext.Provider value={{ createUser, login, logout, user }}>
+      <UserContext.Provider value={{ createUser, login, logout, user, isAuthenticated }}>
         {props.children}
       </UserContext.Provider>
     </>

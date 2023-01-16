@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
+
   async function handleLogout() {
     try {
       await logout();

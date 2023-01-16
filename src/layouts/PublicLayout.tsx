@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import UnAuthorized from '../components/UnAuthorized';
 
 function PublicLayout() {
-    return(<main>
+    return(<UnAuthorized>
         <Outlet/>
-    </main>)
+    </UnAuthorized>)
 }
 
 export default PublicLayout;

@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import ProtectedRoute from '../components/ProtectedRoute';
 
 function PrivateLayout() {
-    return(<main>
+    return(<ProtectedRoute>
         <Outlet/>
-    </main>)
+    </ProtectedRoute>)
 }
 
 export default PrivateLayout;

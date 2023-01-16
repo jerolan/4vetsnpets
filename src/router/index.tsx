@@ -5,6 +5,9 @@ import SignIn from "../pages/SignIn";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import PublicLayout from "../layouts/PublicLayout";
+import PrivateLayout from '../layouts/PrivateLayout';
+import ProtectedRoute from "../components/ProtectedRoute";
+import UnAuthorized from "../components/UnAuthorized";
 
 export const router = createBrowserRouter([
   {
@@ -24,10 +27,17 @@ export const router = createBrowserRouter([
         path: "/signin",
         element: <SignIn />,
       },
+    ],
+  },
+  {
+    path: "/home",
+    element: <PrivateLayout />,
+    errorElement: <NotFound />,
+    children:[
       {
         path: "/home",
         element: <Home />,
       },
-    ],
-  },
+    ]
+  }
 ]);
