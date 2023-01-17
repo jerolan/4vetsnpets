@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    main {
+        width: 100%;
+        padding: 20px;
+    }
+    .bars {
+        display: flex;
+        font-size: 25px;
+        margin-left: 50px;
+        margin-top: 5px;
+    }
+    .sidebar {
+        background-color: map-get($colors, "secondary");
+        color: map-get($colors, "font-color");
+        height: 100vh;
+        width: 200px;
+        transition: all 0.5s;
+        .top_section {
+            @include flex(column);
+            padding: 20px 15px;
+            .logo {
+                font-size: 30px;
+            }
+        }
+        .active {
+            background: map-get($colors, "hover");
+            color: map-get($colors, "white");
+        }
+        .link {
+            display: flex;
+            color: map-get($colors, "font-color");
+            padding: 10px 15px;
+            gap: 15px;
+            transition: all 0.5s;
+            text-decoration: none;
+            &:hover {
+                background: map-get($colors, "font-color");
+                color: map-get($colors, "white");
+                transition: all 0.5s;
+            }
+        }
+        .icon,
+        .link_text {
+            font-size: 20px;
+        }
+        .signout-btn {
+            margin: 50px 10px;
+            width: 90%;
+            background-color: map-get($colors, "font-color");
+            color: map-get($colors, "white");
+            font-size: 17px;
+            padding: 10px 5px;
+            border-radius: 20px;
+            transition: all .3s ease-in-out;
+            &:hover {
+                box-shadow: 3px 5px 10px 3px rgba(0, 0, 0, 0.5);
+                font-size: 18.5px;
+                background-color: map-get($colors, "primary");
+            }
+        }
+    }
+}
