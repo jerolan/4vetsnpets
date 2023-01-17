@@ -36,6 +36,7 @@ export function AuthContextProvider(props: any) {
     return signOut(auth);
   }
 
+  // Get rol
   async function getRol(uid: any) {
     const docRef = doc(fireStore, `users/${uid}`);
     const encrypted = await getDoc(docRef);
