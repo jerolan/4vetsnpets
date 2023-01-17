@@ -38,6 +38,26 @@ export const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
     ]
   }
 ]);
