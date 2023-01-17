@@ -8,6 +8,11 @@ import PublicLayout from "../layouts/PublicLayout";
 import PrivateLayout from '../layouts/PrivateLayout';
 import ProtectedRoute from "../components/ProtectedRoute";
 import UnAuthorized from "../components/UnAuthorized";
+import Vets from '../pages/Vets';
+import Pets from '../pages/Pets';
+import Appointments from '../pages/Appointments';
+import Status from '../pages/Status';
+import MedHistory from '../pages/MedHistory';
 
 export const router = createBrowserRouter([
   {
@@ -30,33 +35,33 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/home",
+    path: "/4vetsnpets",
     element: <PrivateLayout />,
     errorElement: <NotFound />,
     children:[
       {
-        path: "/home",
+        path: "/4vetsnpets",
         element: <Home />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/4vetsnpets/vets",
+        element: <Vets />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/4vetsnpets/pets",
+        element: <Pets />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/4vetsnpets/appointments",
+        element: <Appointments />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/4vetsnpets/status",
+        element: <Status />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/4vetsnpets/history",
+        element: <MedHistory />,
       },
     ]
   }

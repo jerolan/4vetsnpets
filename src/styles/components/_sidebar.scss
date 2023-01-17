@@ -16,16 +16,19 @@
         height: 100vh;
         width: 200px;
         transition: all 0.5s;
-        .top_section {
-            @include flex(column);
-            padding: 20px 15px;
-            .logo {
-                font-size: 30px;
+        .home-link {
+            text-decoration: none;
+            color: map-get($colors, "font-color");
+            .top_section {
+                @include flex(column);
+                padding: 20px 15px;
+                .logo {
+                    font-size: 30px;
+                }
             }
         }
         .active {
             background: map-get($colors, "hover");
-            color: map-get($colors, "white");
         }
         .link {
             display: flex;
@@ -35,7 +38,7 @@
             transition: all 0.5s;
             text-decoration: none;
             &:hover {
-                background: map-get($colors, "font-color");
+                background: map-get($colors, "hover");
                 color: map-get($colors, "white");
                 transition: all 0.5s;
             }
@@ -52,7 +55,7 @@
             font-size: 17px;
             padding: 10px 5px;
             border-radius: 20px;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
             &:hover {
                 box-shadow: 3px 5px 10px 3px rgba(0, 0, 0, 0.5);
                 font-size: 18.5px;

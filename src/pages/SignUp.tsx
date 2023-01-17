@@ -33,7 +33,7 @@ function SignUp() {
       : "user";
     try {
       await createUser(values.email, values.password, rol);
-      navigate("/home");
+      navigate("/4vetsnpets");
     } catch (e) {
       console.error(e);
     }

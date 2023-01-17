@@ -30,7 +30,7 @@ function SignIn() {
       : "user";
     try{
       await login(values.email, values.password, rol);
-      navigate("/home");
+      navigate("/4vetsnpets");
     }catch(e){
       console.error(e);
     }

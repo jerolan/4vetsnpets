@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { GiDogHouse } from "react-icons/gi";
 import * as Fa from "react-icons/fa";
 import * as FaIcons from "react-icons/fa";
@@ -18,31 +18,32 @@ function SideBar(props: any) {
       console.error(e);
     }
   }
+  const fontColor = {color: "white",}
   const menuItems = [
     {
-      path: "/vets",
+      path: "/4vetsnpets/vets",
       name: `${user.rol === "admin" ? "Add vet" : "View vets"}`,
       icon: <Fa.FaHandHoldingMedical />,
     },
     {
-      path: "/pets",
+      path: "/4vetsnpets/pets",
       name: `${user.rol === "user" ? "Add pet" : "View pet"}`,
       icon: <GiDogHouse />,
     },
     {
-      path: "/appointments",
+      path: "/4vetsnpets/appointments",
       name: `${
         user.rol === "admin" ? "Check appointments" : "Add appointment"
       }`,
       icon: <Fa.FaCalendarAlt />,
     },
     {
-      path: "/status",
+      path: "/4vetsnpets/status",
       name: `${user.rol === "admin" ? "Pet status" : "Check status"}`,
       icon: <Fa.FaBath />,
     },
     {
-      path: "/history",
+      path: "/4vetsnpets/history",
       name: "Medical history",
       icon: <Fa.FaNotesMedical />,
     },
@@ -54,21 +55,25 @@ function SideBar(props: any) {
         <div style={{ marginLeft: isOpen ? "20px" : "10px" }} className="bars">
           <FaIcons.FaBars onClick={toggle} />
         </div>
-        <div className="top_section">
-          <img
-            src="src/assets/img/logo.png"
-            alt="4vetsnpets logo"
-            style={{ display: isOpen ? "block" : "none" }}
-          />
-          <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
-            {user.rol === "admin" ? "Vets" : "Pets"}
-          </h1>
-        </div>
+
+        <Link to="/4vetsnpets" className="home-link">
+          <div className="top_section">
+            <img
+              src="src/assets/img/logo.png"
+              alt="4vetsnpets logo"
+              style={{ display: isOpen ? "block" : "none" }}
+            />
+            <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
+              {user.rol === "admin" ? "Vets" : "Pets"}
+            </h1>
+          </div>
+        </Link>
         {menuItems.map((item, index) => (
           <NavLink
             to={item.path}
             key={index}
-            className={(isActive) => "link" + (!isActive ? " active" : "")}
+            style={({isActive}) => isActive ? fontColor : undefined}
+            className={({isActive}) => "link" + (isActive ? " active" : "")}
           >
             <div className="icon">{item.icon}</div>
             <div
