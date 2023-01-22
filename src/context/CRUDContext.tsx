@@ -11,6 +11,7 @@ export function CRUDContextProvider(props: any) {
   const { user } = UserAuth();
   const [vetArray, setVetDataArray] = useState([]);
   const [petArray, setPetDataArray] = useState([]);
+  const [dataArray, setDataArray] = useState([]);
   const vetsData = [
     {
       id: 1,
@@ -73,8 +74,8 @@ export function CRUDContextProvider(props: any) {
   }
 
   // Get database info
-  async function getDatabase(docID: string) {
-    const docRef = doc(fireStore, `vets/${docID}`);
+  async function getDatabase(database:string, docID: string) {
+    const docRef = doc(fireStore, `${database}/${docID}`);
     const encrypted = await getDoc(docRef);
     const finalInfo = encrypted?.data()?.crudContent;
     return finalInfo;
@@ -95,7 +96,7 @@ export function CRUDContextProvider(props: any) {
 
   return (
     <>
-      <CRUDContext.Provider value={{ vetArray, petArray }}>
+      <CRUDContext.Provider value={{ vetArray, petArray, getDatabase }}>
         {props.children}
       </CRUDContext.Provider>
     </>
