@@ -9,7 +9,8 @@ const CRUDContext = createContext<any>({});
 
 export function CRUDContextProvider(props: any) {
   const { user } = UserAuth();
-  const [dataArray, setDataArray] = useState([]);
+  const [vetArray, setVetDataArray] = useState([]);
+  const [petArray, setPetDataArray] = useState([]);
   const vetsData = [
     {
       id: 1,
@@ -26,21 +27,21 @@ export function CRUDContextProvider(props: any) {
       availability: true,
     },
   ];
-
   const petsData = [
     {
-      name: string || null,
-      age: number || null,
-      weigh: number || null,
-      size: number || null,
-      breed: string || null,
+      id: 0,
+      name: "",
+      age: 0,
+      type: "",
+      size: "",
+      breed: "",
+      weight: "",
     },
   ];
-  const data = user.rol === "admin" ? [...vetsData] : [...petsData];
 
   // Search or create a document
-  async function initDocument(docID: string) {
-    const docRef = doc(fireStore, `users/${docID}`);
+  async function initVetsDocument(docID: string) {
+    const docRef = doc(fireStore, `vets/${docID}`);
     const query = await getDoc(docRef);
 
     // Validates if document exists
@@ -48,7 +49,23 @@ export function CRUDContextProvider(props: any) {
       const docInfo = query.data();
       return docInfo.crudContent;
     } else {
-      await setDoc(docRef, {crudContent: data});
+      await setDoc(docRef, { crudContent: [...vetsData] });
+      const query = await getDoc(docRef);
+      const docInfo = query.data();
+      return docInfo?.crudContent;
+    }
+  }
+
+  async function initPetsDocument(docID: string) {
+    const docRef = doc(fireStore, `pets/${docID}`);
+    const query = await getDoc(docRef);
+
+    // Validates if document exists
+    if (query.exists()) {
+      const docInfo = query.data();
+      return docInfo.crudContent;
+    } else {
+      await setDoc(docRef, { crudContent: [...petsData] });
       const query = await getDoc(docRef);
       const docInfo = query.data();
       return docInfo?.crudContent;
@@ -56,8 +73,8 @@ export function CRUDContextProvider(props: any) {
   }
 
   // Get database info
-  async function getDatabase(docID:string) {
-    const docRef = doc(fireStore, `users/${docID}`);
+  async function getDatabase(docID: string) {
+    const docRef = doc(fireStore, `vets/${docID}`);
     const encrypted = await getDoc(docRef);
     const finalInfo = encrypted?.data()?.crudContent;
     return finalInfo;
@@ -65,9 +82,12 @@ export function CRUDContextProvider(props: any) {
 
   useEffect(() => {
     async function fetchDocument() {
-      const fetchData = await initDocument(user.email);
-      setDataArray(fetchData);
-      console.log(fetchData);
+      const fetchData1 = await initVetsDocument(user.email);
+      const fetchData2 = await initPetsDocument(user.email);
+      setVetDataArray(fetchData1);
+      setPetDataArray(fetchData2);
+      console.log(fetchData1);
+      console.log(fetchData2);
     }
 
     fetchDocument();
@@ -75,7 +95,9 @@ export function CRUDContextProvider(props: any) {
 
   return (
     <>
-      <CRUDContext.Provider value={{dataArray}}>{props.children}</CRUDContext.Provider>
+      <CRUDContext.Provider value={{ vetArray, petArray }}>
+        {props.children}
+      </CRUDContext.Provider>
     </>
   );
 }
