@@ -1,8 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { fireStore } from "../services/config";
-import { doc, setDoc, getDoc, getFirestore } from "firebase/firestore";
-import { string } from "prop-types";
-import { number } from "yup/lib/locale";
+import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { UserAuth } from "./AuthContext";
 
 const CRUDContext = createContext<any>({});
@@ -74,11 +72,32 @@ export function CRUDContextProvider(props: any) {
   }
 
   // Get database info
-  async function getDatabase(database:string, docID: string) {
+  async function getDatabase(database: string, docID: string) {
     const docRef = doc(fireStore, `${database}/${docID}`);
     const encrypted = await getDoc(docRef);
     const finalInfo = encrypted?.data()?.crudContent;
     return finalInfo;
+  }
+
+  /* CRUD */
+  // Delete
+  async function crudDelete(
+    id: number,
+    database: string
+  ) {
+
+    // Create new array
+    const docRef = doc(fireStore, `${database}/${user.email}`); 
+    if(database==='vets'){
+        const newArray = vetArray.filter((obj: any) => obj.id !== id);
+        updateDoc(docRef, {crudContent: [...newArray]});
+        setVetDataArray(newArray)
+    }else{
+        const newArray = petArray.filter((obj: any) => obj.id !== id);
+        updateDoc(docRef, {crudContent: [...newArray]});
+        setPetDataArray(newArray)
+    }
+    
   }
 
   useEffect(() => {
@@ -96,7 +115,7 @@ export function CRUDContextProvider(props: any) {
 
   return (
     <>
-      <CRUDContext.Provider value={{ vetArray, petArray, getDatabase }}>
+      <CRUDContext.Provider value={{ vetArray, petArray, getDatabase, crudDelete }}>
         {props.children}
       </CRUDContext.Provider>
     </>

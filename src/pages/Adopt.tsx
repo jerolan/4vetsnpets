@@ -8,7 +8,7 @@ function Adopt() {
   return (
     <>
       <div className="adopt-container">
-        <h1>Available pets for adoption</h1>
+        <h1>Pets available for adoption</h1>
         <br />
         {loading && <p>Loading...</p>}
         {!loading && error && <p>Error loading Posts: {error}</p>}
