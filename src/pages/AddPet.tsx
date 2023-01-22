@@ -52,8 +52,8 @@ function AddPet() {
       weight: "",
     };
 
-    crudCreate("vets", user.email, vetData, petData);
-    navigate("/4vetsnpets/vets");
+    crudCreate("pets", "lara@vet.com", vetData, petData);
+    navigate("/4vetsnpets/pets");
   }
 
   return (
