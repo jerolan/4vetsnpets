@@ -1,0 +1,23 @@
+.comingSoon-container {
+    @include flex(row);
+    height: 90vh;
+    .sign {
+        @include flex(column);
+        background-color: map-get($colors, "cloud");
+        width: 80vw;
+        height: 90vh;
+        &-icon {
+            @include flex(row);
+            background-color: map-get($colors, "font-color");
+            color: map-get($colors, "cloud");
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-size: 50px;
+        }
+        h1 {
+            font-size: 50px;
+            color: map-get($colors, "font-color");
+        }
+    }
+}
