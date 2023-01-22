@@ -8,7 +8,6 @@ function ComingSoon() {
             <FaIcons.FaTools/>
         </div>
         <h1>COMING SOON!</h1>
-        <img src="src/assets/img/confused-dog.png" alt="Confused pug" className='sign-img'/>
       </div>
     </div>
   );
