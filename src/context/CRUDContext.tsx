@@ -100,6 +100,22 @@ export function CRUDContextProvider(props: any) {
     
   }
 
+
+  // Create
+  async function crudCreate(database:string, userId:string, vet:object, pet:object) {
+    const docRef = doc(fireStore, `${database}/${user.email}`); 
+    const data = await getDatabase(database, userId);
+    if(database==='vets'){
+        const newArray = [...data, vet];
+        updateDoc(docRef, {crudContent: [...newArray]});
+        setVetDataArray(newArray);
+    }else{
+        const newArray = [...data, pet];
+        updateDoc(docRef, {crudContent: [...newArray]});
+        setPetDataArray(newArray)
+    }
+  }
+
   useEffect(() => {
     async function fetchDocument() {
       const fetchData1 = await initVetsDocument(user.email);
@@ -115,7 +131,7 @@ export function CRUDContextProvider(props: any) {
 
   return (
     <>
-      <CRUDContext.Provider value={{ vetArray, petArray, getDatabase, crudDelete }}>
+      <CRUDContext.Provider value={{ vetArray, petArray, getDatabase, crudDelete, crudCreate }}>
         {props.children}
       </CRUDContext.Provider>
     </>

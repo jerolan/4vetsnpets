@@ -14,6 +14,8 @@ import Appointments from '../pages/Appointments';
 import Status from '../pages/Status';
 import MedHistory from '../pages/MedHistory';
 import Adopt from "../pages/Adopt";
+import AddVet from '../pages/AddVet';
+import VetProtected from "../components/VetProtected";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "/4vetsnpets/vets",
         element: <Vets />,
+      },
+      {
+        path: "/4vetsnpets/add-vet",
+        element: <AddVet />,
       },
       {
         path: "/4vetsnpets/pets",

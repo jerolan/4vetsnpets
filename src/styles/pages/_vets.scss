@@ -1,0 +1,11 @@
+.vet-container {
+    width: 100%;
+    height: 100vh;
+    .vet-cards {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+}
