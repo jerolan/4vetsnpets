@@ -31,6 +31,11 @@ function SideBar(props: any) {
       icon: <GiDogHouse />,
     },
     {
+      path: "/4vetsnpets/adopt",
+      name: "Adopt",
+      icon: <Fa.FaHeart />,
+    },
+    {
       path: "/4vetsnpets/appointments",
       name: `${
         user.rol === "admin" ? "Check appointments" : "Add appointment"

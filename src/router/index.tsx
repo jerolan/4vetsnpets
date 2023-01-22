@@ -13,6 +13,7 @@ import Pets from '../pages/Pets';
 import Appointments from '../pages/Appointments';
 import Status from '../pages/Status';
 import MedHistory from '../pages/MedHistory';
+import Adopt from "../pages/Adopt";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "/4vetsnpets/pets",
         element: <Pets />,
+      },
+      {
+        path: "/4vetsnpets/adopt",
+        element: <Adopt />,
       },
       {
         path: "/4vetsnpets/appointments",
