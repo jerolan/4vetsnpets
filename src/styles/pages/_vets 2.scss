@@ -1,0 +1,27 @@
+.vet-container {
+    width: 100%;
+    height: 100vh;
+    .vet-btn {
+        text-decoration: none;
+        text-align: center;
+        padding: 10px 30px;
+        margin-top: 35px;
+        border-radius: 20px;
+        font-weight: bold;
+        color: map-get($colors, "white");
+        background-color: map-get($colors, "font-color");
+        font-size: 17px;
+        transition: all .2s ease;
+        &:hover {
+            box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);
+            font-size: 18.5px;
+        }
+    }
+    .vet-cards {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+}
