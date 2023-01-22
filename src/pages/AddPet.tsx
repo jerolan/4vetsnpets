@@ -46,10 +46,10 @@ function AddPet() {
       id: values.petid,
       name: values.petname,
       age: values.age,
-      type: "",
-      size: "",
-      breed: "",
-      weight: "",
+      type: values.type,
+      size: values.size,
+      breed: values.breed,
+      weight: values.weight,
     };
 
     crudCreate("pets", "lara@vet.com", vetData, petData);

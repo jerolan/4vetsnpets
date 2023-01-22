@@ -7,7 +7,6 @@ function Home() {
 
   return (
     <>
-      <h1>Home</h1>
       {user.rol === "admin" ? <VetView /> : <PetView />}
      
     </>

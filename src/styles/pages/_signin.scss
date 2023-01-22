@@ -11,10 +11,13 @@
     box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
     @include flex(row);
     &__img {
+        @include flex(row);
         width: 50%;
         height: 100%;
         padding-top: 60px;
-        @include flex(row);
+        @include media-up(md) {
+            display: none;
+        }
         img {
             position: relative;
             left: 50px;
@@ -33,11 +36,18 @@
         }
     }
     &__form {
+        @include media-up(md) {
+            width: 100%;
+            background-color: map-get($colors, "secondary");
+        }
         @include flex(row);
         width: 50%;
         height: 100%;
         background-color: map-get($colors, "cloud");
         .signin-form {
+            @include media-up(md) {
+                width: 90%;
+            }
             @include flex(column);
             box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.3);
             border-radius: 15px;
