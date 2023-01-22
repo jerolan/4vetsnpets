@@ -48,7 +48,7 @@ function VetList() {
                 <button onClick={() => crudDelete(data.id, "vets")} style={{"background":"red"}}>
                   Delete
                 </button>
-                <button style={{"background":"#5c75db"}}>Update</button>
+                {/* <button style={{"background":"#5c75db"}}>Update</button> */}
               </div>
             </div>
           </div>
