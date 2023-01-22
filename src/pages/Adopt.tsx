@@ -1,22 +1,34 @@
 import { useAxios } from "../hooks/useAxios";
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState } from "react";
+import PetCard from "../components/PetCard";
 
 function Adopt() {
-const pets = useAxios({ endpoint: 'pets' }); 
-
+  const { data, error, loading } = useAxios({ endpoint: "pets" });
 
   return (
     <>
       <div className="adopt-container">
-        <h1>Adopt</h1>
-        {pets.loading && <p>Loading...</p>}
-        {!pets.loading && pets.error && <p>Error loading Posts: {pets.error}</p>}
-        {!pets.loading && pets.data && <div>
-            {pets.data.map((pet:any)=>{
-                return <li key={pet.id}>{pet.name}</li>
+        <h1>Available pets for adoption</h1>
+        <br />
+        {loading && <p>Loading...</p>}
+        {!loading && error && <p>Error loading Posts: {error}</p>}
+        {!loading && data && (
+          <div className="adopt-cards">
+            {data.map((pet: any) => {
+              return (
+                <PetCard
+                  img={pet.img}
+                  name={pet.name}
+                  age={pet.age}
+                  type={pet.type}
+                  gender={pet.gender}
+                  size={pet.size}
+                  weight={pet.weight}
+                />
+              );
             })}
-            </div>}
+          </div>
+        )}
       </div>
     </>
   );

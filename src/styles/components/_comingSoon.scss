@@ -1,6 +1,6 @@
 .comingSoon-container {
     @include flex(row);
-    height: 95vh;
+    height: 90vh;
     .sign {
         @include flex(column);
         background-color: map-get($colors, "cloud");
