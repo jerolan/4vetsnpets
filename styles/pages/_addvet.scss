@@ -1,0 +1,60 @@
+.add-container {
+    height: 80vh;
+    @include flex(row);
+    &__form {
+        @include flex(row);
+        width: 50%;
+        height: 100%;
+        .add-form {
+            padding-top: 20px;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            height: 90%;
+            width: 100%;
+            background-color: map-get($colors, "white");
+            color: map-get($colors, "font-color");
+            &__content {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+                height: 40%;
+                width: 100%;
+                input {
+                    width: 90%;
+                    border: 2px solid map-get($colors, "font-color");
+                    border-radius: 15px;
+                    padding: 7px 0 7px 40px;
+                    outline: none;
+                    color: map-get($colors, "font-color");
+                    &::placeholder {
+                        color: map-get($colors, "font-color-light");
+                    }
+                }
+            }
+            &__footer {
+                @include flex(column);
+                width: 100%;
+                margin-top: 170px;
+                .add-form-btn {
+                    text-align: center;
+                    padding: 10px;
+                    border-radius: 25px;
+                    width: 50%;
+                    font-weight: bold;
+                    color: map-get($colors, "cloud");
+                    background-color: map-get($colors, "font-color");
+                    font-size: 17px;
+                    transition: all 0.2s ease;
+                    &:hover {
+                        box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);
+                        font-size: 18.5px;
+                    }
+                }
+            }
+        }
+    }
+}

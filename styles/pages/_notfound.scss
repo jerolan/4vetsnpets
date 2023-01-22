@@ -1,0 +1,11 @@
+.notfound {
+    @include flex(column);
+    height: 80vh;
+    color: map-get($colors, "font-color");
+    img {
+        margin: 50px 0;
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+    }
+}
