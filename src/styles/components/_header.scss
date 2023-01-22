@@ -1,0 +1,14 @@
+.header {
+    width: 100%;
+    &-nav {
+        display: flex;
+        align-items: center;
+        &__logo {
+            width: 50px;
+            margin: 20px;
+        }
+        &__title {
+            color: map-get($colors, 'font-color');
+        }
+    }
+}
